@@ -1,0 +1,58 @@
+.card.day {
+  width: 120px;
+  height: 160px;
+  background-color: #b58a44 ;
+  border: 5px solid #8a643a;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  /* Gives the illusion of a wood grain pattern */
+  background-size: 20px 20px;
+}
+
+.card.day:hover {
+  /* Slight zoom effect on hover */
+  transform: scale(1.05);
+  /* Darker shadow on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card.day.opened {
+  background-color: #d1c6b1;
+  background-image: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card.day-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  z-index: 1;
+}
+
+.card.day::before {
+  /* Add door handle */
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #444;
+  transform: translateY(-50%);
+}
+
+.day::before:hover {
+  background-color: #f1c40f;
+}
+
+.card.day-content {
+  text-align: center;
+  font-size: 1rem;
+  color: #142143;
+}
