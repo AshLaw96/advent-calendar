@@ -1,38 +1,106 @@
-.App {
-  text-align: center;
+/* Prevent horizontal overflow */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures padding and borders don't affect the width */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Ensure body and html don't exceed 100% width */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Apply Poppins font for the body text */
+body, button, .btn {
+  font-family: 'Poppins', sans-serif !important;  /* Body text with Poppins */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* Apply Poppins font for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;  /* Headings with Poppins */
+  font-weight: 700;  /* Bold weight for headings */
+}
+
+/* Apply Dancing Script for festive touch */
+.festive-text {
+  font-family: 'Dancing Script', cursive;
+}
+
+/* Flex container to center everything */
+.title-container {
+  display: flex;                  /* Make it a flex container */
+  justify-content: center;        /* Centers the content horizontally */
+  align-items: center;            /* Vertically align items */
+  gap: 5px;                      /* Space between emojis and title */
+  position: relative;
+}
+
+/* Emoji styling */
+.left-tree-emoji, .right-tree-emoji {
+  font-size: 3rem;                /* Adjust font size of the emoji */
+  width: 35px;                    /* Set width to keep them aligned with title */
+  height: auto;                   /* Maintain aspect ratio */
+  transform: translateY(-6px);  /* Slightly adjust vertical position */
+}
+
+/* Container for the donate button */
+.donate-container {
+  text-align: center;  /* Center the button */
+  margin-top: 30px;  /* Space between Advent Calendar and the donate button */
+  margin-bottom: 20px; /* Space below the donate button */
+}
+
+/* Style for the donate button */
+.donate-button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #e81552;  /* Red background color */
+  color: #f9d342;  /* Gold text */
+  padding: 12px 25px;
+  font-size: 1.25rem;  /* Adjust font size */
+  font-weight: bold;  /* Make the text bold */
+  text-decoration: none;  /* Remove underline */
+  border-radius: 25px;  /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Optional: subtle shadow */
+  transition: background-color 0.3s ease, transform 0.3s ease;  /* Smooth transition */
+  text-transform: uppercase; /* Make text uppercase */
 }
 
-.App-link {
-  color: #61dafb;
+.donate-button:hover {
+  background-color: #17afe0; /* Change to blue on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Add spacing around the stars */
+.donate-icon {
+  margin: 0 5px; /* Space between the stars and the text */
+}
+
+/* Adjust spacing between title and emojis on mobile screens */
+@media (max-width: 417px) {
+  .title-container {
+    gap: 2px;                   /* Smaller gap between emojis and title */
   }
-  to {
-    transform: rotate(360deg);
+
+  .left-tree-emoji {
+    margin-left: 60px;              /* Decrease margin between emojis and title */
+  }
+
+  .right-tree-emoji {
+    margin-right: 60px;             /* Decrease margin between emojis and title */
+  }
+}
+
+/* Adjust spacing between title and emojis on small mobile screens */
+@media (max-width: 417px) {
+  .left-tree-emoji {
+    margin-left: 30px;              /* Decrease margin between emojis and title */
+  }
+
+  .right-tree-emoji {
+    margin-right: 30px;             /* Decrease margin between emojis and title */
   }
 }
