@@ -1,17 +1,19 @@
 .card.day {
-  width: 120px;
+  width: 103px;
   height: 160px;
   background-color: #b58a44 ;
-  border: 5px solid #8a643a;
-  border-radius: 10px;
+  border: 5px solid #e81552;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  /* Gives the illusion of a wood grain pattern */
-  background-size: 20px 20px;
+  /* Ensure the image covers the door */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card.day:hover {
@@ -22,37 +24,69 @@
 }
 
 .card.day.opened {
-  background-color: #d1c6b1;
-  background-image: none;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: #cae7f9 !important;
+  background-image: none !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
-.card.day-number {
-  font-size: 2rem;
+.card .day-number {
+  font-size: 3rem;
   font-weight: bold;
   color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
 }
 
-.card.day::before {
-  /* Add door handle */
-  content: " ";
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #444;
-  transform: translateY(-50%);
-}
-
-.day::before:hover {
-  background-color: #f1c40f;
-}
-
-.card.day-content {
+.card .day-content {
   text-align: center;
   font-size: 1rem;
   color: #142143;
+}
+
+/* Special style for Day 25 */
+.card.day.day-25 {
+  width: 100% !important;
+  background-color: #dab376;
+  background-image: none !important;
+}
+
+.card.day.day-25:hover {
+  box-shadow: inset 0 0 15px rgba(232, 21, 82, 0.8);  /* Red glow on hover */
+}
+
+.day-number.day-25 {
+  font-size: 4rem;
+  color: #e81552;
+  top: 15%;
+  border: #e81552 solid 3px;
+  border-radius: 50%;
+  /* padding: 10px; */
+}
+
+.card.day.day-25:hover .day-number {
+  box-shadow: 0 0 8px rgba(232, 21, 82, 0.8), 0 0 20px rgba(232, 21, 82, 0.8), 0 0 30px rgba(232, 21, 82, 0.8); /* Red glowing border */
+}
+
+.card.day.day-25::before {
+  content: " "; 
+  position: absolute; 
+  top: 50%; 
+  left: 10px; 
+  width: 12px; 
+  height: 12px; 
+  border-radius: 50%; 
+  background-color: #444; 
+  transform: translateY(-50%);
+}
+
+.card.day.day-25.opened::before {
+  display: none;   /* Removes the door handle when opened */
+  box-shadow: none;
+}
+
+.card.day.day-25.opened:hover .day-number {
+  box-shadow: none;
 }
