@@ -1,0 +1,30 @@
+/* Snowflakes container (full page width and height) */
+.snowflakes-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1000;  /* Ensure it is above other content */
+}
+
+/* Snowflake styling */
+.snowflake {
+  position: absolute;
+  background-size: contain;      /* Ensures snowflake image is scaled to fit */
+  background-repeat: no-repeat;  /* Prevents snowflakes from repeating */
+  opacity: 0.8;
+  visibility: visible;  /* Make snowflakes visible initially */
+  animation: snowfall linear infinite; /* Falling animation */
+}
+
+/* Falling snowflakes animation */
+@keyframes snowfall {
+  0% {
+    top: -5%; /* Start position above the screen */
+  }
+  100% {
+    top: 100%;  /* End position at the bottom of the screen */
+  }
+}
