@@ -1,0 +1,33 @@
+/* Styling for the SVP logo image */
+.logo-image {
+  width: 70px;               /* Fixed width for the SVP logo */
+  height: auto;              /* Maintain aspect ratio */
+}
+
+/* Styling for the SVP title logo image */
+.logo-title {
+  width: 100%;               /* Make the title image responsive */
+  max-width: 120px;          /* Limit the maximum width of the title image */
+  height: auto;              /* Maintain aspect ratio */
+}
+
+/* Styling for the appeal icon */
+.appeal-icon {
+  width: 200px;              /* Fixed width for the appeal icon */
+  height: auto;              /* Maintain aspect ratio */
+}
+
+/* Smaller logo and icon for smaller screens */
+@media (max-width: 768px) {
+  .logo-title {
+    max-width: 120px;        /* Adjust title logo size on medium-sized screens */
+  }
+
+  .logo-image {
+    width: 60px;             /* Adjust logo size on smaller screens */
+  }
+
+  .appeal-icon {
+    width: 150px;             /* Adjust appeal icon size on smaller screens */
+  }
+}
