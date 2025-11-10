@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Day from "./Day";
 import { Button, Modal as BootstrapModal } from "react-bootstrap";
-import "../styles/AdventCalendar.css";
+import "../styles/Modal.css";
 
 const AdventCalendar = () => {
   const [openedDoors, setOpenedDoors] = useState([]);
@@ -147,12 +147,13 @@ const AdventCalendar = () => {
 
   return (
     <div className="container my-4">
-      <div className="row row-cols-2 row-cols-sm-4 row-cols-md-6 g-3">
-        {/* Bootstrap grid system */}
+      {/* First Row for Days 1 to 24 */}
+      <div className="row row-cols-2 row-cols-sm-4 row-cols-md-6 g-3 justify-content-center mx-auto">
+        {/* Render doors for Day 1 to Day 24 */}
         {Array.from({ length: 24 }, (_, index) => {
           const day = index + 1;
           return (
-            <div className="col" key={day}>
+            <div className="col-auto" key={day}>
               <Day
                 day={day}
                 isOpened={openedDoors.includes(day)}
@@ -164,15 +165,47 @@ const AdventCalendar = () => {
         })}
       </div>
 
-      <BootstrapModal show={showModal} onHide={closeModal} centered>
-        <BootstrapModal.Header closeButton>
-          <BootstrapModal.Title>{modalContent?.title}</BootstrapModal.Title>
+      {/* Separate Row for Day 25 */}
+      <div className="row g-3 justify-content-center mt-1">
+        <div className="col-12" key="25">
+          {" "}
+          {/* Full width on all screen sizes */}
+          <Day
+            day={25}
+            isOpened={openedDoors.includes(25)}
+            onClick={() => handleDoorClick(25)}
+            content={adventContent[24]}
+          />
+        </div>
+      </div>
+
+      <BootstrapModal
+        show={showModal}
+        onHide={closeModal}
+        dialogClassName="svp-modal-dialog"
+        contentClassName="svp-modal-content"
+        backdropClassName="svp-modal-backdrop"
+        centered
+      >
+        <BootstrapModal.Header closeButton className="svp-modal-header">
+          <BootstrapModal.Title className="svp-modal-title">
+            Modal Title
+          </BootstrapModal.Title>
         </BootstrapModal.Header>
-        <BootstrapModal.Body>
-          <p>{modalContent?.content}</p>
+        <BootstrapModal.Body className="svp-modal-body">
+          {modalContent && (
+            <>
+              <h5>{modalContent.title}</h5>
+              <p>{modalContent.content}</p>
+            </>
+          )}
         </BootstrapModal.Body>
-        <BootstrapModal.Footer>
-          <Button variant="secondary" onClick={closeModal}>
+        <BootstrapModal.Footer className="svp-modal-footer d-flex justify-content-center">
+          <Button
+            variant="primary"
+            onClick={closeModal}
+            className="svp-modal-button fw-bold text-uppercase"
+          >
             Close
           </Button>
         </BootstrapModal.Footer>

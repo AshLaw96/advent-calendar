@@ -1,0 +1,49 @@
+.svp-modal-backdrop {
+  background-color: rgba(20, 33, 67, 0.75); /* brand colour #142143 with some opacity */
+}
+
+.svp-modal-dialog {
+  max-width: 600px;                           /* adjust size */
+}
+
+.svp-modal-content {
+  background-color: #ffffff;                /* white background for modal content, per brand */
+  border: 2px solid #e81552;                /* accent colour */
+  border-radius: 8px;
+}
+
+.svp-modal-header {
+  background-color: #17afe0;                /* brand sky‑blue */
+  color: #ffffff;                           /* text white */
+  border-bottom: 1px solid #e81552;
+}
+
+.svp-modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.svp-modal-body {
+  color: #142143;                           /* dark navy text */
+  padding: 1.5rem;
+  background-color: #cae7f9;                /* pale background */
+}
+
+.svp-modal-footer {
+  background-color: #cae7f9;                /* pale background */
+  border-top: 1px solid #e81552;
+}
+
+.svp-modal-button {
+  background-color: #e81552 !important;     /* custom background color (red accent) */
+  border: none;
+  padding: 10px 20px;                         /* Adjust padding */
+  font-size: 1rem;                            /* Adjust font size */
+  color: #ffffff;                           /* White text */
+  border-radius: 8px;                         /* rounded corners */
+  transition: background-color 0.3s ease;     /* Smooth background transition */
+}
+
+.svp-modal-button:hover {
+  background-color: #17afe0 !important;     /* Change to another color on hover (blue) */
+}
