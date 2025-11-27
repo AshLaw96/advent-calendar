@@ -12,9 +12,9 @@ html, body {
   position: relative;
 }
 
-/* Apply Poppins font for the body text */
-body, button, .btn {
-  font-family: 'Poppins', sans-serif !important;  /* Body text with Poppins */
+/* By adding .App, this selector is more specific than Bootstrap's default */
+.App, .App button, .App .btn {
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Apply Poppins font for headings */
@@ -28,6 +28,85 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Dancing Script', cursive;
 }
 
+/* --- BORDERS & MAIN CONTENT --- */
+
+.left-bg, .right-bg {
+  position: fixed;
+  height: 100vh;
+  z-index: 100;
+  object-fit: cover;
+  
+  /* Base size (for screens > 1200px) */
+  width: 180px; 
+}
+
+.left-bg {
+  left: 0;
+  top: 0;
+}
+
+.right-bg {
+  right: 0;
+  top: 0;
+}
+
+.main-content-wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  background-image: linear-gradient(90deg,
+      rgba(202, 231, 249, 0.8) 20%,
+      #ffffff 40%,
+      #ffffff 60%,
+      rgba(202, 231, 249, 0.8) 80%);
+  
+  /* 💥 Base padding: 180px (border) + 15px (buffer) = 195px */
+  padding: 5px 195px;
+}
+
+/* --- RESPONSIVE BORDERS & PADDING --- */
+
+/* For medium screens (e.g., tablets) */
+@media (max-width: 1200px) {
+  .left-bg, .right-bg {
+    width: 80px; /* Shrink border */
+  }
+
+  .main-content-wrapper {
+    /* 💥 Fix: 100px (border) + 15px (buffer) = 115px */
+    padding: 0 115px; 
+  }
+}
+
+/* For small screens (e.g., mobile) */
+@media (max-width: 768px) {
+  .left-bg, .right-bg {
+    width: 40px; /* Further shrink border */
+  }
+
+  .main-content-wrapper {
+    /* 💥 Fix: 40px (border) + 15px (buffer) = 55px */
+    padding: 0 55px; 
+  }
+}
+
+/* For very small screens (hides borders) */
+@media (max-width: 417px) {
+  .left-bg, .right-bg {
+    display: none; /* Hide borders */
+  }
+
+  .main-content-wrapper {
+    /* Borders are gone, so use small padding */
+    padding: 0 25px; 
+  }
+
+  .title-container {
+    gap: 2px;
+  }
+}
+ 
 /* Flex container to center everything */
 .title-container {
   display: flex;                  /* Make it a flex container */
@@ -59,8 +138,8 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   background-color: #e81552;  /* Red background color */
   color: #f9d342;  /* Gold text */
-  padding: 12px 25px;
-  font-size: 1.25rem;  /* Adjust font size */
+  padding: 10px 20px;
+  font-size: 1.1rem;  /* Adjust font size */
   font-weight: bold;  /* Make the text bold */
   text-decoration: none;  /* Remove underline */
   border-radius: 25px;  /* Rounded corners */
@@ -76,31 +155,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Add spacing around the stars */
 .donate-icon {
-  margin: 0 5px; /* Space between the stars and the text */
+  margin: 0 2px; /* Space between the stars and the text */
 }
 
-/* Adjust spacing between title and emojis on mobile screens */
-@media (max-width: 417px) {
-  .title-container {
-    gap: 2px;                   /* Smaller gap between emojis and title */
-  }
+@media (max-width: 520px) {
+  .title-container h1.title {
+    /* 1. Force the h1 element to be narrow, which makes it wrap */
+    max-width: 200px; /* Adjust this value to fine-tune the wrap point */
 
-  .left-tree-emoji {
-    margin-left: 60px;              /* Decrease margin between emojis and title */
-  }
-
-  .right-tree-emoji {
-    margin-right: 60px;             /* Decrease margin between emojis and title */
-  }
-}
-
-/* Adjust spacing between title and emojis on small mobile screens */
-@media (max-width: 417px) {
-  .left-tree-emoji {
-    margin-left: 30px;              /* Decrease margin between emojis and title */
-  }
-
-  .right-tree-emoji {
-    margin-right: 30px;             /* Decrease margin between emojis and title */
+    /* 2. Center the text ("Calendar") under the first line ("2025 Advent") */
+    text-align: center;
   }
 }
