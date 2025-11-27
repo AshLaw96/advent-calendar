@@ -3,7 +3,7 @@ import Day from "./Day";
 import { Button, Modal as BootstrapModal } from "react-bootstrap";
 import "../styles/Modal.css";
 import day1Image from "../assets/images/1st.png";
-import day2Image from "../assets/images/yolonda.jpg";
+import day2Image from "../assets/images/giving-tuesday.png";
 import day3Image from "../assets/images/margaret.jpg";
 import day4Image from "../assets/images/ely-bridge.jpg";
 import day5Image from "../assets/images/5th.png";
@@ -13,7 +13,20 @@ import day8Image from "../assets/images/csp-deaf-centre.png";
 import day9Image from "../assets/images/bradford.png";
 import day10Image from "../assets/images/10th.png";
 import day11Image from "../assets/images/tower-house.png";
+import day12Image from "../assets/images/yolonda.jpg";
+import day13Image from "../assets/images/leeds.jpg";
 import day14Image from "../assets/images/14th.png";
+import day15Image from "../assets/images/newcastle.png";
+import day16Image from "../assets/images/brixton.jpg";
+import day17Image from "../assets/images/southend.jpg";
+import day18Image from "../assets/images/wirral-calendar.jpg";
+import day19Image from "../assets/images/pontypridd.jpg";
+import day20Image from "../assets/images/shop.jpg";
+import day21Image from "../assets/images/call-to-action.png";
+import day22Image from "../assets/images/percent-76.png";
+import day23Image from "../assets/images/26th.png";
+import day24Image from "../assets/images/24th.png";
+import day25Image from "../assets/images/25th.png";
 
 const adventContent = [
   {
@@ -26,14 +39,14 @@ const adventContent = [
   },
   {
     date: 2,
-    title: "Day 2: Yolanda's Story: A Mother Finding Peace",
+    title: "Day 2: Giving Tuesday - Lift a Life Christmas Appeal",
     content:
-      "I finally felt peace in my life when the SVP was able to help me and my sons. Can you help us continue to help more people like Yolanda?",
+      "This #GivingTuesday, you can help lift a life?'I travel two hours a day to get here and back to the hostel but it's worth it. By the time I leave here I am happier than when I came.' — James*, The Wirral. For James, and thousands of others across England and Wales, our Support Centres are more than a place of support — they're a source of dignity, warmth, and hope. But right now poverty is pulling too many people down. Families are working harder than ever and still struggling to get by. With your gift today, you can help lift someone up. With food, comfort and the reassurance that they are not alone You can donate now and help us bring hope this Winter and beyond \n*named changed for anonymity",
     mediaType: "image",
     mediaUrl: day2Image,
     linkUrl:
-      "https://fundraising.svp.org.uk/page/173912/donate/1?ea.tracking.id=calendar",
-    linkText: "Please donate to our Lift a life Christmas",
+      "https://fundraising.svp.org.uk/page/173912/donate/1?ea.tracking.id=FB_Organic",
+    linkText: "Give vulnerable families the lift they need this Christmas ",
   },
   {
     date: 3,
@@ -122,17 +135,22 @@ const adventContent = [
   },
   {
     date: 12,
-    title: "Day 12: Placeholder Message of Hope",
-    content: "Placeholder content for Day 12",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 12: Yolanda's Story: A Mother Finding Peace",
+    content:
+      "I finally felt peace in my life when the SVP was able to help me and my sons. Can you help us continue to help more people like Yolanda?",
+    mediaType: "image",
+    mediaUrl: day12Image,
+    linkUrl:
+      "https://fundraising.svp.org.uk/page/173912/donate/1?ea.tracking.id=calendar",
+    linkText: "Please donate to our Lift a life Christmas",
   },
   {
     date: 13,
-    title: "Day 13: Placeholder Message of Hope",
-    content: "Placeholder content for Day 13",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 13: St Vincent's Leeds Community Centre",
+    content:
+      "St Vincent's Leeds, a vibrant community hub based in East Leeds, is dedicated to changing lives through advice, support and education. The centre supports the local community with a wide range of free services and group activities, expert debt advice and counselling, emergency food support, a charity shop and community café - all under one roof!",
+    mediaType: "image",
+    mediaUrl: day13Image,
   },
   {
     date: 14,
@@ -144,80 +162,112 @@ const adventContent = [
   },
   {
     date: 15,
-    title: "Day 15: Placeholder Message of Hope",
-    content: "Placeholder content for Day 15",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 15: St Vincent's Newcastle Community Centre",
+    content:
+      "St Vincent's Newcastle is a thriving community hub, home to Vinnies drop-in, a local institution where hot 3-course, free lunches are served along with free haircuts, NHS health checks and welfare advice. In addition, a weekly Vinnies Pop-up market helps local residents with the cost of living, whilst also offering support from a partnership with Citizen's Advice.",
+    mediaType: "image",
+    mediaUrl: day15Image,
+    linkUrl: "https://svp.org.uk/st-vincents-newcastle",
+    linkText: "Learn more about the Centre here",
   },
   {
     date: 16,
-    title: "Day 16: Placeholder Message of Hope",
-    content: "Placeholder content for Day 16",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 16: St Vincent's Brixton Community Centre",
+    content:
+      "St Vincent’s Brixton is a vibrant arts-oriented community hub based in Brixton, London. The centre offers meaningful and long-term befriending and support people with independent living developing their skills and helping to create longer terms benefits in people's lives. ",
+    mediaType: "image",
+    mediaUrl: day16Image,
+    linkUrl: "https://svp.org.uk/st-vincents-brixton",
+    linkText: "Learn more about the Centre here",
   },
   {
     date: 17,
-    title: "Day 17: Placeholder Message of Hope",
-    content: "Placeholder content for Day 17",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 17: St Vincent's Southend Community Centre",
+    content:
+      "St Vincent's Southend offers a friendly, non-judgemental and unique 'wrap around' service tailored to the needs of the individual. The centre also provides foodbank services, hot meals, in and outreach support, homelessness support, household items and clothing, counselling, dementia support and a befriending service.",
+    mediaType: "image",
+    mediaUrl: day17Image,
+    linkUrl: "https://svp.org.uk/st-vincents-southend",
+    linkText: "Learn more about the Centre here",
   },
   {
     date: 18,
-    title: "Day 18: Placeholder Message of Hope",
-    content: "Placeholder content for Day 18",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 18: St Vincent's Wirral Community Centre",
+    content:
+      "Located on Grange Road West, the building, formerly the Merseyside Centre for Deaf People, hosts a foodbank and a daily afternoon drop-in café, which will reach out to people in need and offer signposting to local service providers who can provide specialised support. Learn",
+    mediaType: "image",
+    mediaUrl: day18Image,
+    linkUrl: " https://svp.org.uk/microsite/st-vincents-wirral",
+    linkText: "Learn more about the Centre here",
   },
   {
     date: 19,
-    title: "Day 19: Placeholder Message of Hope",
-    content: "Placeholder content for Day 19",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 19: St Vincent's Pontypridd Community Centre",
+    content:
+      "Our charity shops are so much more than somewhere to get great deals - by shopping in our charity shops, you're helping support the vital work of the SVP & supporting people in need. ",
+    mediaType: "image",
+    mediaUrl: day19Image,
+    linkUrl: "https://svp.org.uk/shop",
+    linkText: "SVP Shop: local and online | St Vincent de Paul Society",
   },
   {
     date: 20,
-    title: "Day 20: Placeholder Message of Hope",
-    content: "Placeholder content for Day 20",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 20: SVP Charity Shops: Supporting Our Work",
+    content:
+      "Our charity shops are so much more than somewhere to get great deals - by shopping in our charity shops, you're helping support the vital work of the SVP & supporting people in need.",
+    mediaType: "image",
+    mediaUrl: day20Image,
+    linkUrl: "https://svp.org.uk/shop",
+    linkText: "SVP Shop: local and online | St Vincent de Paul Society",
   },
   {
     date: 21,
-    title: "Day 21: Placeholder Message of Hope",
-    content: "Placeholder content for Day 21",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 21: A Call to Action: Help Lift a Life",
+    content:
+      "Too many families are facing impossible choices Child Action Poverty Group revealed: \n4.5million children are growing up in the UK in poverty \n43% of children living in lone parent households are in poverty \nThe groups most affected include households with children, single parents, part-time workers, and people living with health conditions. Behind every statistic is a family spending Christmas under pressure, deciding whether to heat their home, feed their children or keep the lights on. Tonight, as many of us gather in warmth and comfort, we're asking: will you #HelpLiftALife? Your gift could provide food, warmth, dignity, and hope to someone who feels forgotten.",
+    mediaType: "image",
+    mediaUrl: day21Image,
+    linkUrl:
+      "https://fundraising.svp.org.uk/page/173912/donate/1?ea.tracking.id=FB_Organic",
+    linkText: "Give vulnerable families the lift they need this Christmas",
   },
   {
     date: 22,
-    title: "Day 22: Placeholder Message of Hope",
-    content: "Placeholder content for Day 22",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 22: A Message of Hope",
+    content:
+      "Our recent In-Work Poverty Report revealed: \n💧 76% of the survey's SVP frontline respondents witnessed those they support having to choose between essential items such as food, household bills and heating, despite working \n🏠 75% report families falling behind on household bills  This Christmas, we're asking you to do something different. Instead of adding to your basket, can you add to someone,s hope. \nDonate to the SVP Christmas Appeal and Help Lift a Life:",
+    mediaType: "image",
+    mediaUrl: day22Image,
+    linkUrl:
+      "https://fundraising.svp.org.uk/page/173912/donate/1?ea.tracking.id=FB_Organic",
+    linkText: "Give vulnerable families the lift they need this Christmas",
   },
   {
     date: 23,
-    title: "Day 23: Placeholder Message of Hope",
-    content: "Placeholder content for Day 23",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 23: Continuing the Care Beyond Christmas",
+    content:
+      "We embrace the spirit of neighbourly care, ensuring that support and kindness extend beyond the holiday itself. As the season settles into a quieter rhythm, we remain present, bringing comfort, continuity and a reminder that compassion is a gift carried into every day.",
+    mediaType: "image",
+    mediaUrl: day23Image,
+    linkUrl:
+      "https://fundraising.svp.org.uk/page/173912/donate/1?ea.tracking.id=calendar",
+    linkText: "Can you help us continue to Lift a life this Winter & beyond?",
   },
   {
     date: 24,
-    title: "Day 24: Placeholder Message of Hope",
-    content: "Placeholder content for Day 24",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 24: Christmas Eve: A Message of Compassion",
+    content:
+      "On Christmas Eve, we reflect our founding spirit of compassion by offering warmth, welcome, and practical support to anyone who needs it. It's a moment to honour volunteers, recognise the dignity of every person and share hope with neighbours who might otherwise feel alone at this time of year.",
+    mediaType: "image",
+    mediaUrl: day24Image,
   },
   {
     date: 25,
-    title: "Day 25: Special Christmas Message",
-    content: "Merry Christmas! 🎄",
-    mediaType: "none",
-    mediaUrl: "",
+    title: "Day 25: Merry Christmas from SVP",
+    content:
+      "We are wishing a Merry Christmas to all our members, supporters, donors, staff & those who have reached out to us this year.\nWe continue to serve you into 2026 and beyond.",
+    mediaType: "image",
+    mediaUrl: day25Image,
   },
 ];
 
@@ -337,22 +387,16 @@ const AdventCalendar = () => {
                 </a>
               )}
 
-              {/* 💥 2. CONDITIONALLY RENDER VIDEO (YouTube Embed) */}
-              {modalContent.mediaType === "video" && modalContent.mediaUrl && (
-                // Container to maintain the 16:9 aspect ratio for video
-                <div className="ratio ratio-16x9 mb-3">
-                  <iframe
-                    src={modalContent.mediaUrl}
-                    title={modalContent.title}
-                    allowFullScreen
-                  />
-                </div>
-              )}
+              {/* 💥 2. RENDER CONTENT TEXT */}
+              <div className="modal-content-text">
+                {modalContent.content
+                  .split("\n") // Split content by new line
+                  .map((line, index) => (
+                    <p key={index}>{line}</p> // Render each line in a <p> tag
+                  ))}
+              </div>
 
-              {/* 💥 3. RENDER CONTENT TEXT */}
-              <p>{modalContent.content}</p>
-
-              {/* 💥 4. CONDITIONALLY RENDER LINK BUTTON */}
+              {/* 💥 3. CONDITIONALLY RENDER LINK BUTTON */}
               {modalContent.linkUrl && (
                 <div className="text-center">
                   <a

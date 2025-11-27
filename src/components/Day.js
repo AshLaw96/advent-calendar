@@ -26,9 +26,9 @@ const Day = ({ day, content, isOpened, onClick, isLocked }) => {
           {day}
         </Card.Title>
       </Card.Body>
-      {isLocked && (
-        <div className="locked-overlay">Locked</div> // Display a locked overlay on locked doors
-      )}
+
+      {/* Show locked overlay if the door is locked */}
+      {isLocked && <div className="locked-overlay">Locked</div>}
     </Card>
   );
 };

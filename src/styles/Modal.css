@@ -23,6 +23,12 @@
   color: #142143;                           /* dark navy text */
   padding: 1.5rem;
   background-color: #cae7f9;                /* pale background */
+  overflow-y: auto;
+}
+
+.modal-content-text p {
+  margin-bottom: 1rem;                      /* spacing between paragraphs */
+  line-height: 1.6;                         /* improve readability */
 }
 
 .svp-modal-body a {
