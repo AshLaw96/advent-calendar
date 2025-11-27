@@ -29,6 +29,24 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
+.card.day.locked {
+  opacity: 0.5; /* Dim the locked doors */
+  pointer-events: none; /* Disable click events for locked doors */
+}
+
+.locked-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 4px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 .card .day-number {
   font-size: 3rem;
   font-weight: bold;
@@ -90,3 +108,22 @@
 .card.day.day-25.opened:hover .day-number {
   box-shadow: none;
 }
+
+.card.day.day-25 .locked-overlay {
+  left: 70%; /* Aligns locked text in the center initially */
+  top: 50%;
+  transform: translateY(-50%, -50%); /* Adjust for vertical centering */
+}
+
+
+    /* Apply rotation and custom positioning for small screens */
+  .card.day.day-25 .locked-overlay {
+    /* 1. Reset positioning to tuck it into the corner */
+    top: 50%;
+    left: 85%; /* Move far right */
+    
+    /* 2. Apply both translation and rotation in ONE transform */
+    /* translate(-50%, -50%) centers the text block */
+    /* rotate(90deg) turns it sideways */
+    transform: translate(-50%, -50%) rotate(90deg); 
+  }
