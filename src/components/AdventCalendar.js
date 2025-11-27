@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Day from "./Day";
 import { Button, Modal as BootstrapModal } from "react-bootstrap";
 import "../styles/Modal.css";
@@ -221,14 +221,42 @@ const adventContent = [
   },
 ];
 
+const AdventCalendar = () => {
+  const [openedDoors, setOpenedDoors] = useState([]);
+  const [modalContent, setModalContent] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [currentDate, setCurrentDate] = useState(null); // State to store current date
+
+  // Get the current date and set it
+  useEffect(() => {
+    const today = new Date();
+    const currentDay = today.getDate(); // Get the day of the month (1-31)
+    setCurrentDate(currentDay); // Set the current day in state
+    if (currentDate && !openedDoors.includes(currentDate)) {
+      setOpenedDoors((prev) => [...prev, currentDate]);
+    }
+  }, [currentDate, openedDoors]);
 
   const handleDoorClick = (day) => {
-    if (!openedDoors.includes(day)) {
-      setOpenedDoors([...openedDoors, day]);
+    if (currentDate >= day) {
+      // Only allow the door to be opened if the current date is greater than or equal to the door number
+      if (!openedDoors.includes(day)) {
+        setOpenedDoors([...openedDoors, day]);
+      }
+      const content = adventContent.find((item) => item.date === day);
+
+      // Use 'content' properly by setting it to modalContent
+      setModalContent(content); // Set the whole content (including title, content, mediaUrl) to modal
+
+      setShowModal(true);
+    } else {
+      // Handle locked doors
+      setModalContent({
+        title: "This door is locked",
+        content: "Come back on the correct date to open this door 🎄",
+      });
+      setShowModal(true);
     }
-    const content = adventContent.find((item) => item.date === day);
-    setModalContent(content);
-    setShowModal(true);
   };
 
   const closeModal = () => {
@@ -238,18 +266,18 @@ const adventContent = [
 
   return (
     <div className="container my-4">
-      {/* First Row for Days 1 to 24 */}
-      <div className="row row-cols-2 row-cols-sm-4 row-cols-md-6 g-3 justify-content-center mx-auto">
+      <div className="advent-card-grid">
         {/* Render doors for Day 1 to Day 24 */}
         {Array.from({ length: 24 }, (_, index) => {
           const day = index + 1;
           return (
-            <div className="col-auto" key={day}>
+            <div key={day}>
               <Day
                 day={day}
                 isOpened={openedDoors.includes(day)}
                 onClick={() => handleDoorClick(day)}
                 content={adventContent[day - 1]}
+                isLocked={currentDate < day} // Lock door if the date is less than the door number
               />
             </div>
           );
@@ -257,17 +285,14 @@ const adventContent = [
       </div>
 
       {/* Separate Row for Day 25 */}
-      <div className="row g-3 justify-content-center mt-1">
-        <div className="col-12" key="25">
-          {" "}
-          {/* Full width on all screen sizes */}
-          <Day
-            day={25}
-            isOpened={openedDoors.includes(25)}
-            onClick={() => handleDoorClick(25)}
-            content={adventContent[24]}
-          />
-        </div>
+      <div className="day-25-wrapper">
+        <Day
+          day={25}
+          isOpened={openedDoors.includes(25)}
+          onClick={() => handleDoorClick(25)}
+          content={adventContent[25 - 1]}
+          isLocked={currentDate < 25} // Lock door if the date is less than 25
+        />
       </div>
 
       {/** Modal for displaying door content **/}

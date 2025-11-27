@@ -47,6 +47,16 @@
   font-weight: bold;
 }
 
+/* Main Advent Grid */
+.advent-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, max-content); /* Default 2 columns on small screens */
+  gap: 16px;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .card .day-number {
   font-size: 3rem;
   font-weight: bold;
@@ -65,10 +75,23 @@
 }
 
 /* Special style for Day 25 */
+.day-25-wrapper {
+    /* * This controls the card on LARGE screens.
+     * Set a max-width that matches your 24-card grid.
+     * Your grid is (6 cards * 120px wide) + (5 gaps * 16px) = 800px.
+     * This makes the Day 25 card line up nicely with the grid above it.
+     */
+    max-width: 820px;
+    
+    /* We use 'width: 100%' so it can shrink on smaller screens */
+    width: 100%;
+    margin: 20px auto; /* Center the card and add some vertical spacing */
+}
+
 .card.day.day-25 {
-  width: 100% !important;
+  width: 100%;
   background-color: #dab376;
-  background-image: none !important;
+  background-image: none;
 }
 
 .card.day.day-25:hover {
@@ -115,6 +138,24 @@
   transform: translateY(-50%, -50%); /* Adjust for vertical centering */
 }
 
+/* Media Query for 4 columns (Bootstrap 'sm' = 576px) */
+@media (min-width: 576px) {
+    .advent-card-grid {
+        /* 4 columns */
+        grid-template-columns: repeat(4, max-content);
+    }
+}
+
+@media (max-width: 800px) {
+    .day-25-wrapper {
+        /*
+         * '60vw' means 60% of the Viewport Width.
+         * This forces the card to always leave 20% of the screen's
+         * width as empty space on both the left and right,
+         * stopping it from ever overlapping your borders.
+         */
+        max-width: 60vw;
+    }
 
     /* Apply rotation and custom positioning for small screens */
   .card.day.day-25 .locked-overlay {
@@ -127,3 +168,18 @@
     /* rotate(90deg) turns it sideways */
     transform: translate(-50%, -50%) rotate(90deg); 
   }
+}
+
+/* Media Query for 6 columns (Bootstrap 'lg' = 992px) */
+@media (min-width: 992px) {
+    .advent-card-grid {
+        /* 6 columns */
+        grid-template-columns: repeat(6, max-content);
+    }
+
+    /* On large screens, make the cards slightly bigger */
+    .card.day {
+        width: 120px;
+        /* height: 180px; */ /* You can also increase height */
+    }
+}
