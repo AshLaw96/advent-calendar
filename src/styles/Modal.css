@@ -2,10 +2,6 @@
   background-color: rgba(20, 33, 67, 0.75); /* brand colour #142143 with some opacity */
 }
 
-.svp-modal-dialog {
-  max-width: 600px;                           /* adjust size */
-}
-
 .svp-modal-content {
   background-color: #ffffff;                /* white background for modal content, per brand */
   border: 2px solid #e81552;                /* accent colour */
@@ -27,6 +23,21 @@
   color: #142143;                           /* dark navy text */
   padding: 1.5rem;
   background-color: #cae7f9;                /* pale background */
+}
+
+.svp-modal-body a {
+  display: flex;
+  justify-content: center;
+}
+
+.svp-modal-link-button {
+  color: #fff !important;                           /* white accent text */
+  background-color: #142143 !important;     /* dark navy background */
+  cursor: pointer;
+}
+
+.svp-modal-link-button:hover {
+  background-color: #e81552 !important;     /* red accent on hover */
 }
 
 .svp-modal-footer {

@@ -179,6 +179,7 @@ const AdventCalendar = () => {
         </div>
       </div>
 
+      {/** Modal for displaying door content **/}
       <BootstrapModal
         show={showModal}
         onHide={closeModal}
@@ -186,17 +187,70 @@ const AdventCalendar = () => {
         contentClassName="svp-modal-content"
         backdropClassName="svp-modal-backdrop"
         centered
+        size="lg"
       >
         <BootstrapModal.Header closeButton className="svp-modal-header">
           <BootstrapModal.Title className="svp-modal-title">
-            Modal Title
+            {/* Display the title from modalContent */}
+            {modalContent ? modalContent.title : "Modal Title"}
           </BootstrapModal.Title>
         </BootstrapModal.Header>
         <BootstrapModal.Body className="svp-modal-body">
           {modalContent && (
             <>
-              <h5>{modalContent.title}</h5>
+              {/* 💥 1. CONDITIONALLY RENDER IMAGE */}
+              {modalContent.mediaType === "image" && modalContent.mediaUrl && (
+                /* 💥 Wrap the image in a link so can see image better on modal */
+                <a
+                  href={modalContent.mediaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={modalContent.mediaUrl}
+                    alt={modalContent.title}
+                    style={{
+                      maxWidth: "100%",
+                      maxHeight: "60vh",
+                      objectFit: "contain",
+                      marginBottom: "15px",
+                      borderRadius: "8px",
+                      cursor: "zoom-in" /* Adds a visual cue */,
+                    }}
+                  />
+                </a>
+              )}
+
+              {/* 💥 2. CONDITIONALLY RENDER VIDEO (YouTube Embed) */}
+              {modalContent.mediaType === "video" && modalContent.mediaUrl && (
+                // Container to maintain the 16:9 aspect ratio for video
+                <div className="ratio ratio-16x9 mb-3">
+                  <iframe
+                    src={modalContent.mediaUrl}
+                    title={modalContent.title}
+                    allowFullScreen
+                  />
+                </div>
+              )}
+
+              {/* 💥 3. RENDER CONTENT TEXT */}
               <p>{modalContent.content}</p>
+
+              {/* 💥 4. CONDITIONALLY RENDER LINK BUTTON */}
+              {modalContent.linkUrl && (
+                <div className="text-center">
+                  <a
+                    href={modalContent.linkUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    // Using Bootstrap button classes to make it look good
+                    className="btn btn-primary svp-modal-link-button fw-bold"
+                  >
+                    {modalContent.linkText || "Find Out More"}{" "}
+                    {/* Fallback text */}
+                  </a>
+                </div>
+              )}
             </>
           )}
         </BootstrapModal.Body>
