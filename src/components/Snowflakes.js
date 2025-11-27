@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import snowflake1 from "../assets/images/snowflake-1.png"; // Snowflake images
 import snowflake2 from "../assets/images/snowflake-2.png";
 import snowflake3 from "../assets/images/snowflake-3.png";
@@ -8,52 +8,64 @@ import snowflake6 from "../assets/images/snowflake-6.png";
 import "../styles/Snowflakes.css"; // Import the CSS file for snowflakes
 
 const Snowflakes = () => {
+  // 💥 1. Use state to hold the array of snowflake styles
+  const [snowflakes, setSnowflakes] = useState([]);
+
+  // 💥 2. useMemo caches the image array so it's not rebuilt on every render
+  const snowflakeImages = useMemo(
+    () => [
+      snowflake1,
+      snowflake2,
+      snowflake3,
+      snowflake4,
+      snowflake5,
+      snowflake6,
+    ],
+    []
+  );
   useEffect(() => {
-    const snowflakeCount = 50; // Number of snowflakes
-    const container = document.querySelector(".snowflakes-container");
+    const snowflakeCount = 50;
+    const newSnowflakes = []; // A temporary array
 
-    // Create snowflakes dynamically
     for (let i = 0; i < snowflakeCount; i++) {
-      const snowflake = document.createElement("div");
-      snowflake.classList.add("snowflake");
+      // 💥 3. Create a style *object* instead of a DOM element
+      const randomIndex = Math.floor(Math.random() * snowflakeImages.length);
+      const randomLeft = Math.floor(Math.random() * 100) + "vw";
+      const randomSize = Math.floor(Math.random() * 30) + 10 + "px";
+      const randomDuration = Math.floor(Math.random() * (15 - 8) + 8) + "s";
+      const randomDelay = Math.floor(Math.random() * 5) + "s";
+      // This is for the new, improved animation (see step 2)
+      const randomDrift = Math.floor(Math.random() * 100 - 50) + "px";
 
-      // Randomly choose a snowflake image
-      const randomImage = [
-        snowflake1,
-        snowflake2,
-        snowflake3,
-        snowflake4,
-        snowflake5,
-        snowflake6,
-      ];
-      const randomIndex = Math.floor(Math.random() * randomImage.length);
-      snowflake.style.backgroundImage = `url(${randomImage[randomIndex]})`;
-
-      // Randomize the left and top position of each snowflake
-      const randomLeft = Math.floor(Math.random() * 100) + "vw"; // Random left position (100% of the viewport width)
-      const randomTop = Math.floor(Math.random() * 100) + "vh"; // Random top position (100% of the viewport height)
-
-      snowflake.style.left = randomLeft;
-      snowflake.style.top = randomTop;
-
-      // Randomize size of snowflakes (to ensure visibility)
-      const randomSize = Math.floor(Math.random() * 30) + 10 + "px"; // Random size between 10px and 40px
-      snowflake.style.width = randomSize; // Set random width
-      snowflake.style.height = randomSize; // Set random height
-
-      // Randomize animation duration and delay for variation
-      const randomDuration = Math.floor(Math.random() * (15 - 8) + 8) + "s"; // Random duration between 8s and 15s
-      const randomDelay = Math.floor(Math.random() * 5) + "s"; // Random delay for staggered falling
-
-      snowflake.style.animationDuration = randomDuration;
-      snowflake.style.animationDelay = randomDelay;
-
-      // Append the snowflake to the container
-      container.appendChild(snowflake);
+      newSnowflakes.push({
+        id: i, // React needs a unique key
+        style: {
+          backgroundImage: `url(${snowflakeImages[randomIndex]})`,
+          left: randomLeft,
+          width: randomSize,
+          height: randomSize,
+          animationDuration: randomDuration,
+          animationDelay: randomDelay,
+          // 💥 4. Pass the random drift as a CSS Custom Property
+          "--drift-amount": randomDrift,
+        },
+      });
     }
-  }, []);
 
-  return <div className="snowflakes-container"></div>;
+    // 💥 5. Set the state once with the complete array
+    setSnowflakes(newSnowflakes);
+  }, [snowflakeImages]); // Re-run if the image array (in useMemo) ever changes
+
+  return (
+    <div className="snowflakes-container">
+      {
+        /* 💥 6. Map over the state array to render the snowflakes */
+        snowflakes.map((flake) => (
+          <div key={flake.id} className="snowflake" style={flake.style} />
+        ))
+      }
+    </div>
+  );
 };
 
 export default Snowflakes;

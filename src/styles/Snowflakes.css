@@ -17,14 +17,19 @@
   opacity: 0.8;
   visibility: visible;  /* Make snowflakes visible initially */
   animation: snowfall linear infinite; /* Falling animation */
+  top: -5%; /* Start above the screen */
 }
 
 /* Falling snowflakes animation */
 @keyframes snowfall {
   0% {
-    top: -5%; /* Start position above the screen */
+    /* Start at the top, with no horizontal drift */
+    transform: translateX(0);
   }
   100% {
-    top: 100%;  /* End position at the bottom of the screen */
+    /* Fall to the bottom */
+    top: 100%;
+    /* 💥 Use the custom variable to drift left or right */
+    transform: translateX(var(--drift-amount));
   }
 }
