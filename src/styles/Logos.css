@@ -1,33 +1,48 @@
+/* Flex container for the SVP Logo and Title Logo */
+.logo-container {
+  margin-bottom: 20px; /* Adjust space below the logos */
+  width: 100%; 
+}
+
+/* Container for the top logo group (SVP logo and title) */
+.logo-group-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; 
+}
+
 /* Styling for the SVP logo image */
 .logo-image {
-  width: 70px;               /* Fixed width for the SVP logo */
+  max-width: 100px;           /* Limit width to 100px */
   height: auto;              /* Maintain aspect ratio */
 }
 
 /* Styling for the SVP title logo image */
 .logo-title {
-  width: 100%;               /* Make the title image responsive */
-  max-width: 120px;          /* Limit the maximum width of the title image */
+  max-width: 170px;          /* Limit width to 170px */
   height: auto;              /* Maintain aspect ratio */
 }
 
 /* Styling for the appeal icon */
 .appeal-icon {
-  width: 200px;              /* Fixed width for the appeal icon */
+  width: 80%;                /* Makes it responsive by using percentage */
+  max-width: 200px;          /* Limit to 200px */
   height: auto;              /* Maintain aspect ratio */
+  margin-top: 20px;          /* Adds space above appeal icon */
 }
 
 /* Smaller logo and icon for smaller screens */
 @media (max-width: 768px) {
-  .logo-title {
-    max-width: 120px;        /* Adjust title logo size on medium-sized screens */
+  .logo-image {
+    max-width: 80px;         /* Smaller SVP logo on medium-sized screens */
   }
 
-  .logo-image {
-    width: 60px;             /* Adjust logo size on smaller screens */
+  .logo-title {
+    max-width: 130px;        /* Smaller title logo on medium-sized screens */
   }
 
   .appeal-icon {
-    width: 150px;             /* Adjust appeal icon size on smaller screens */
+    max-width: 150px;        /* Smaller appeal icon on smaller screens */
   }
 }

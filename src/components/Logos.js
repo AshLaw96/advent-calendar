@@ -8,25 +8,17 @@ function Logo() {
   return (
     <div className="logo-container">
       {/* Row for the SVP Logo and Title Logo */}
-      <div className="row mb-4 mt-2 ps-2 text-lg-start">
-        <div className="col-auto">
-          {" "}
-          {/* Removed text-center and padding */}
-          <img
-            src={svpLogo}
-            alt="SVP Advent Calendar Logo"
-            className="logo-image"
-          />
-        </div>
-        <div className="col-auto p-0">
-          {" "}
-          {/* Removed text-center and padding */}
-          <img
-            src={svpTitleLogo}
-            alt="SVP Advent Calendar Title Logo"
-            className="logo-title"
-          />
-        </div>
+      <div className="logo-group-top">
+        <img
+          src={svpLogo}
+          alt="SVP Advent Calendar Logo"
+          className="logo-image"
+        />
+        <img
+          src={svpTitleLogo}
+          alt="SVP Advent Calendar Title Logo"
+          className="logo-title"
+        />
       </div>
 
       {/* Row for the Appeal Icon */}
