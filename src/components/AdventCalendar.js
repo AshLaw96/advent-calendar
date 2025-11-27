@@ -2,134 +2,225 @@ import React, { useState } from "react";
 import Day from "./Day";
 import { Button, Modal as BootstrapModal } from "react-bootstrap";
 import "../styles/Modal.css";
+import day1Image from "../assets/images/1st.png";
+import day2Image from "../assets/images/yolonda.jpg";
+import day3Image from "../assets/images/margaret.jpg";
+import day4Image from "../assets/images/ely-bridge.jpg";
+import day5Image from "../assets/images/5th.png";
+import day6Image from "../assets/images/chorley.png";
+import day7Image from "../assets/images/sheffield-awards.png";
+import day8Image from "../assets/images/csp-deaf-centre.png";
+import day9Image from "../assets/images/bradford.png";
+import day10Image from "../assets/images/10th.png";
+import day11Image from "../assets/images/tower-house.png";
+import day14Image from "../assets/images/14th.png";
 
-const AdventCalendar = () => {
-  const [openedDoors, setOpenedDoors] = useState([]);
-  const [modalContent, setModalContent] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+const adventContent = [
+  {
+    date: 1,
+    title: "Day 1: A Message of Peace",
+    content:
+      "May His peace be with you today. Advent reminds us that Christ comes to the poor and the humble.",
+    mediaType: "image", // Specify the type
+    mediaUrl: day1Image, // The imported image
+  },
+  {
+    date: 2,
+    title: "Day 2: Yolanda's Story: A Mother Finding Peace",
+    content:
+      "I finally felt peace in my life when the SVP was able to help me and my sons. Can you help us continue to help more people like Yolanda?",
+    mediaType: "image",
+    mediaUrl: day2Image,
+    linkUrl:
+      "https://fundraising.svp.org.uk/page/173912/donate/1?ea.tracking.id=calendar",
+    linkText: "Please donate to our Lift a life Christmas",
+  },
+  {
+    date: 3,
+    title: "Day 3: Margaret's Story: Finding Joy Again",
+    content:
+      "It's so enjoyable now just to get out thanks to the SVP. Can you help us create more happy memories for people like Margaret?",
+    mediaType: "image",
+    mediaUrl: day3Image,
+    linkUrl:
+      "https://fundraising.svp.org.uk/page/173912/donate/1?ea.tracking.id=calendar",
+    linkText: "Please help us lift a life this Christmas",
+  },
+  {
+    date: 4,
+    title: "Day 4: St Vincent's Centre Ely Bridge",
+    content:
+      "St Vincent's Centre Ely Bridge is a community-support hub that offers a welcoming environment where confidence, skills and well-being can be nurtured. It provides a range of free services from gym and boxing classes to peer support and mental-health resources, to supporting individuals dealing with social issues, loneliness, addiction or mental-health challenges.",
+    mediaType: "image",
+    mediaUrl: day4Image,
+    linkUrl: "https://svp.org.uk/microsite/st-vincents-ely-bridge",
+    linkText: "Learn more about the Centre here",
+  },
+  {
+    date: 5,
+    title: "Day 5: International Volunteer Day",
+    content:
+      "Blessed are the hands that bring Christ's love to others. On this 5th day of Advent, which is International Volunteer Day, we give thanks for all who serve with humble hearts",
+    mediaType: "image",
+    mediaUrl: day5Image,
+  },
+  {
+    date: 6,
+    title: "Day 6: SVP Chorley Buddies",
+    content:
+      "SVP Chorley Buddies is a community-led Centre in Chorley that offers practical support to people facing isolation, hardship or financial difficulty. From discounted shopping via Good Food Clubs to befriending, shopping and med-collection services. There's the aim to reduce social isolation and poverty by providing affordable essentials, friendship and community activities by helping over 1,000 people each week through food support and social outreach.",
+    mediaType: "image",
+    mediaUrl: day6Image,
+    linkUrl: "https://svp.org.uk/microsite/st-vincents-chorley-buddies",
+    linkText: "Learn more about the Centre here",
+  },
+  {
+    date: 7,
+    title: "Day 7: ",
+    content:
+      "St Vincent's Sheffield Furniture Project is a community-support project that collects donated furniture and household items across Sheffield, then redistributes them for free to individuals and families in need, aiming to turn empty houses into homes. In recent years the project has dramatically scaled up: in 2023 alone it provided almost 3,000 pieces of essential furniture (beds, tables, chairs, mattresses and more) with more than half of which went to children.",
+    mediaType: "image",
+    mediaUrl: day7Image,
+    linkUrl: "https://svp.org.uk/sheffield-furniture-store",
+    linkText: "Learn more about the Centre here",
+  },
+  {
+    date: 8,
+    title: "Day 8: Newcastle Deaf Centre",
+    content:
+      "The Newcastle Deaf Centre offers services including welfare, health and well-being advice in British Sign Language (BSL), a weekly Deaf social club and café, BSL classes, monthly BSL-interpreted mass and inclusion-focused events, all aimed at fostering communication, inclusion and community. ",
+    mediaType: "image",
+    mediaUrl: day8Image,
+    linkUrl: "https://svp.org.uk/microsite/svp-deaf-centre-newcastle",
+    linkText: "Learn more about the Centre here",
+  },
+  {
+    date: 9,
+    title: "Day 9: St Vincent's Social Enterprise Bradford",
+    content:
+      "St Vincent's Social Enterprise Bradford, is the Barkerend area of Bradford offering a wide range of free services including ESOL, group activities and projects such as: upcycling and sewing, gardening, immigration support and an outreach service in the South of Bradford. St Vincent's Social Enterprise, Bradford also runs a superstore at Rees Way, offering high quality household items including white goods and furniture.",
+    mediaType: "image",
+    mediaUrl: day9Image,
+  },
+  {
+    date: 10,
+    title: "Day 10: Human Rights Day",
+    content:
+      "Through the SVP, may we serve with compassion and courage. Today, on Human Rights Day, we reflect on God's gift of every human life.",
+    mediaType: "image",
+    mediaUrl: day10Image,
+  },
+  {
+    date: 11,
+    title: "Day 11: St Vincent's Brighton - Tower House Community Centre",
+    content:
+      "St Vincent's Brighton, commonly known as Tower House Community Centre, supports people over the age of 50. The centre offers a welcoming café (open to people of any age, including dog-owners), meals and simpler comforts like barista-style coffee and snacks.",
+    mediaType: "image",
+    mediaUrl: day11Image,
+    linkUrl: "https://svp.org.uk/st-vincents-centre-brighton-tower-house",
+    linkText: "Learn more about the Centre here",
+  },
+  {
+    date: 12,
+    title: "Day 12: Placeholder Message of Hope",
+    content: "Placeholder content for Day 12",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+  {
+    date: 13,
+    title: "Day 13: Placeholder Message of Hope",
+    content: "Placeholder content for Day 13",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+  {
+    date: 14,
+    title: "Day 14: Jubilee of Prisoners - A Message of Mercy",
+    content:
+      "May Christ's mercy and hope reach every heart, and may we share His compassion through our service. As we commemorate the Jubilee of Prisoners, today we pray for those in prison.",
+    mediaType: "image",
+    mediaUrl: day14Image,
+  },
+  {
+    date: 15,
+    title: "Day 15: Placeholder Message of Hope",
+    content: "Placeholder content for Day 15",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+  {
+    date: 16,
+    title: "Day 16: Placeholder Message of Hope",
+    content: "Placeholder content for Day 16",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+  {
+    date: 17,
+    title: "Day 17: Placeholder Message of Hope",
+    content: "Placeholder content for Day 17",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+  {
+    date: 18,
+    title: "Day 18: Placeholder Message of Hope",
+    content: "Placeholder content for Day 18",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+  {
+    date: 19,
+    title: "Day 19: Placeholder Message of Hope",
+    content: "Placeholder content for Day 19",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+  {
+    date: 20,
+    title: "Day 20: Placeholder Message of Hope",
+    content: "Placeholder content for Day 20",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+  {
+    date: 21,
+    title: "Day 21: Placeholder Message of Hope",
+    content: "Placeholder content for Day 21",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+  {
+    date: 22,
+    title: "Day 22: Placeholder Message of Hope",
+    content: "Placeholder content for Day 22",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+  {
+    date: 23,
+    title: "Day 23: Placeholder Message of Hope",
+    content: "Placeholder content for Day 23",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+  {
+    date: 24,
+    title: "Day 24: Placeholder Message of Hope",
+    content: "Placeholder content for Day 24",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+  {
+    date: 25,
+    title: "Day 25: Special Christmas Message",
+    content: "Merry Christmas! 🎄",
+    mediaType: "none",
+    mediaUrl: "",
+  },
+];
 
-  const adventContent = [
-    {
-      date: 1,
-      title: "Day 1: Placeholder Message of Hope",
-      content: "Placeholder content for Day 1",
-    },
-    {
-      date: 2,
-      title: "Day 2: Placeholder Message of Hope",
-      content: "Placeholder content for Day 2",
-    },
-    {
-      date: 3,
-      title: "Day 3: Placeholder Message of Hope",
-      content: "Placeholder content for Day 3",
-    },
-    {
-      date: 4,
-      title: "Day 4: Placeholder Message of Hope",
-      content: "Placeholder content for Day 4",
-    },
-    {
-      date: 5,
-      title: "Day 5: Placeholder Message of Hope",
-      content: "Placeholder content for Day 5",
-    },
-    {
-      date: 6,
-      title: "Day 6: Placeholder Message of Hope",
-      content: "Placeholder content for Day 6",
-    },
-    {
-      date: 7,
-      title: "Day 7: Placeholder Message of Hope",
-      content: "Placeholder content for Day 7",
-    },
-    {
-      date: 8,
-      title: "Day 8: Placeholder Message of Hope",
-      content: "Placeholder content for Day 8",
-    },
-    {
-      date: 9,
-      title: "Day 9: Placeholder Message of Hope",
-      content: "Placeholder content for Day 9",
-    },
-    {
-      date: 10,
-      title: "Day 10: Placeholder Message of Hope",
-      content: "Placeholder content for Day 10",
-    },
-    {
-      date: 11,
-      title: "Day 11: Placeholder Message of Hope",
-      content: "Placeholder content for Day 11",
-    },
-    {
-      date: 12,
-      title: "Day 12: Placeholder Message of Hope",
-      content: "Placeholder content for Day 12",
-    },
-    {
-      date: 13,
-      title: "Day 13: Placeholder Message of Hope",
-      content: "Placeholder content for Day 13",
-    },
-    {
-      date: 14,
-      title: "Day 14: Placeholder Message of Hope",
-      content: "Placeholder content for Day 14",
-    },
-    {
-      date: 15,
-      title: "Day 15: Placeholder Message of Hope",
-      content: "Placeholder content for Day 15",
-    },
-    {
-      date: 16,
-      title: "Day 16: Placeholder Message of Hope",
-      content: "Placeholder content for Day 16",
-    },
-    {
-      date: 17,
-      title: "Day 17: Placeholder Message of Hope",
-      content: "Placeholder content for Day 17",
-    },
-    {
-      date: 18,
-      title: "Day 18: Placeholder Message of Hope",
-      content: "Placeholder content for Day 18",
-    },
-    {
-      date: 19,
-      title: "Day 19: Placeholder Message of Hope",
-      content: "Placeholder content for Day 19",
-    },
-    {
-      date: 20,
-      title: "Day 20: Placeholder Message of Hope",
-      content: "Placeholder content for Day 20",
-    },
-    {
-      date: 21,
-      title: "Day 21: Placeholder Message of Hope",
-      content: "Placeholder content for Day 21",
-    },
-    {
-      date: 22,
-      title: "Day 22: Placeholder Message of Hope",
-      content: "Placeholder content for Day 22",
-    },
-    {
-      date: 23,
-      title: "Day 23: Placeholder Message of Hope",
-      content: "Placeholder content for Day 23",
-    },
-    {
-      date: 24,
-      title: "Day 24: Placeholder Message of Hope",
-      content: "Placeholder content for Day 24",
-    },
-  ];
 
   const handleDoorClick = (day) => {
     if (!openedDoors.includes(day)) {
