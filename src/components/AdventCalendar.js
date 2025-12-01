@@ -282,10 +282,7 @@ const AdventCalendar = () => {
     const today = new Date();
     const currentDay = today.getDate(); // Get the day of the month (1-31)
     setCurrentDate(currentDay); // Set the current day in state
-    if (currentDate && !openedDoors.includes(currentDate)) {
-      setOpenedDoors((prev) => [...prev, currentDate]);
-    }
-  }, [currentDate, openedDoors]);
+  }, []);
 
   const handleDoorClick = (day) => {
     if (currentDate >= day) {
@@ -328,6 +325,7 @@ const AdventCalendar = () => {
                 onClick={() => handleDoorClick(day)}
                 content={adventContent[day - 1]}
                 isLocked={currentDate < day} // Lock door if the date is less than the door number
+                currentDate={currentDate}
               />
             </div>
           );
@@ -342,6 +340,7 @@ const AdventCalendar = () => {
           onClick={() => handleDoorClick(25)}
           content={adventContent[25 - 1]}
           isLocked={currentDate < 25} // Lock door if the date is less than 25
+          currentDate={currentDate}
         />
       </div>
 

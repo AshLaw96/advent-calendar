@@ -3,12 +3,14 @@ import { Card } from "react-bootstrap";
 import doorImage from "../assets/images/door.jpg";
 import "../styles/Day.css";
 
-const Day = ({ day, content, isOpened, onClick, isLocked }) => {
+const Day = ({ day, content, isOpened, onClick, isLocked, currentDate }) => {
   return (
     <Card
       className={`day ${isOpened ? "opened" : ""} ${
         day === 25 ? "day-25" : ""
-      } ${isLocked ? "locked" : ""}`}
+      } ${isLocked ? "locked" : ""}
+      ${currentDate === day ? "is-today" : ""}
+      `}
       onClick={!isLocked ? onClick : undefined}
       aria-label={isLocked ? "This door is locked" : `Day ${day}`}
       style={{
